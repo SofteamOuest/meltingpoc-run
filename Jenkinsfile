@@ -5,10 +5,10 @@ import java.text.*
 podTemplate(label: 'meltingpoc-run-pod', containers: [
 
         // le slave jenkins
-        containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine'),
+        containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine')],
 
         // montage nécessaire pour que le conteneur docker fonction (Docker In Docker)
-        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]]
+        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]
         ) {
 
         node('meltingpoc-run-pod') {
