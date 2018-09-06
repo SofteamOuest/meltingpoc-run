@@ -2,7 +2,7 @@
 import java.text.*
 
 // pod utilisé pour la compilation du projet
-podTemplate(label: 'meltingpoc-parcours-integration-pod', containers: [
+podTemplate(label: 'meltingpoc-run-pod', containers: [
 
         // le slave jenkins
         containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine'),
@@ -11,7 +11,7 @@ podTemplate(label: 'meltingpoc-parcours-integration-pod', containers: [
         volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]
         ) {
 
-        node('meltingpoc-parcours-integration-pod') {
+        node('meltingpoc-run-pod') {
 
             properties([parameters([
                     text(defaultValue: '', description: '', name: 'env'),
