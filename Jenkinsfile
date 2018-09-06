@@ -24,6 +24,7 @@ podTemplate(label: 'meltingpoc-run-pod', containers: [
                     string(defaultValue: '', description: '', name: 'gestion_personnes', trim: true),
                     string(defaultValue: '', description: '', name: 'parcours_integration', trim: true),
                     string(defaultValue: '', description: '', name: 'referentiel_personnes_api', trim: true),
+                    string(defaultValue: '', description: '', name: 'referentiel_personnes_mock', trim: true),
                     string(defaultValue: '', description: '', name: 'referentiel_personnes_ui', trim: true)
             ])])
 
@@ -77,6 +78,12 @@ podTemplate(label: 'meltingpoc-run-pod', containers: [
                                         string(name: 'chart', value: "referentiel-personnes-api"),
                                         string(name: 'env', value: params.env)], wait: false
 
+                            if (params.referentiel_personnes_mock != '')
+                                build job: '/SOFTEAMOUEST/chart-run/master', parameters: [
+                                        string(name: 'image', value: params.referentiel_personnes_mock),
+                                        string(name: 'chart', value: "referentiel-personnes-mock"),
+                                        string(name: 'env', value: params.env)], wait: false
+                                        
                             if (params.referentiel_personnes_ui != '')
                                 build job: '/SOFTEAMOUEST/chart-run/master', parameters: [
                                         string(name: 'image', value: params.referentiel_personnes_ui),
