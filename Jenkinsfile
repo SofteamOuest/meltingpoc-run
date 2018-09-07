@@ -34,7 +34,9 @@ podTemplate(label: 'meltingpoc-run-pod', containers: [
                                 build job: '/SOFTEAMOUEST/chart-run/master', parameters: [
                                         string(name: 'image', value: params.api_gateway),
                                         string(name: 'chart', value: "api-gateway"),
-                                        string(name: 'env', value: params.env)], wait: false
+                                        string(name: 'env', value: params.env),
+                                        string(name: 'alias', value: 'meltingpoc'),
+                                        ], wait: false
 
                             if (params.evenement_parcours_integration != '')
                                 build job: '/SOFTEAMOUEST/chart-run/master', parameters: [
